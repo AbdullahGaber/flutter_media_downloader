@@ -312,16 +312,17 @@ class FlutterMediaDownloaderPlugin : FlutterPlugin, MethodCallHandler {
 
 
 
-    private fun getMimeType(file: File): String? {
-        val extension = file.extension
-        return when (extension.toLowerCase()) {
-            "pdf" -> "application/pdf"
-            "jpg", "jpeg", "png" -> "image/*"
-            "mp4" -> "video/*"
-            // Add more cases for other file types as needed
-            else -> "*/*"
-        }
+private fun getMimeType(file: File): String? {
+    val extension = file.extension
+    // Change .toLowerCase() to .lowercase()
+    return when (extension.lowercase()) {
+        "pdf" -> "application/pdf"
+        "jpg", "jpeg", "png" -> "image/*"
+        "mp4" -> "video/*"
+        // Add more cases for other file types as needed
+        else -> "*/*"
     }
+}
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         // Clean up resources if needed
